@@ -12,7 +12,7 @@ int solve(vector<int> input){
 int singleNumber(const vector<int> &A) {
                     int n = A.size();
                     int answer = 0;
-                    for(int i = 31 ; i > 0 ; i--){
+                    for(int i = 31 ; i >= 0 ; i--){
                         int positionCount = 1<<i;
                         int count = 0;
                         for(int x = 0 ; x < A.size() ; x++){
