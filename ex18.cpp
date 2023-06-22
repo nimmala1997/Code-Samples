@@ -22,7 +22,7 @@ int solve(vector<int> &A, int B) {
                 return count;
 }
 
-int main(){
+int main() {
                 vector<int> answer;
                 int arr[] = {1,12,10,3,14,10,5};
                 for(int i = 0 ; i < 7 ; i++)
