@@ -51,4 +51,4 @@
             dv_printf (dv_INFO, "in memory load function ");
             AXI_WRITE_NIC400(TILE_ADDR(0, row_no, 0x00008000), (uint64)0x00001234);
             dv_printf (dv_INFO, "memory load function completed ");
-         }›
+         }
