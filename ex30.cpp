@@ -47,3 +47,15 @@ core1:
    mov eax,[es:edx]
    cmp eax, 0x77777777
    jne failed
+
+file_read = "cachecoherency.lst"
+
+filedata = ""
+
+with open(file_read, "r") as file:
+    for line in file:
+      if("modified" in line || "shared" in line || "exclusive" in line)
+         print(line)
+      if("exclusive" in line) 
+         break
+           

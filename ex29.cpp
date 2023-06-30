@@ -27,4 +27,4 @@ int main(){
    }
    int answer = solve(input,202);
    return 0;
-} 
+}
