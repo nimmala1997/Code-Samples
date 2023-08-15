@@ -1,6 +1,7 @@
 #include<iostream>
 #include<vector>
 #include <utility>
+#include<algorithm>
 using namespace std;
 
 class Trie{
@@ -39,6 +40,7 @@ pair<bool, Trie*> search(Trie* root, string input){
 }
 
 void printAll(Trie* root, string prefix, vector<pair<string, int> > &allStrings){
+    if(root->isWord)
     for(int i = 0 ; i < 26; i++){
         Trie* temp = root->allCharacters.at(i);
         char currCharacter = i + 97;
@@ -88,10 +90,13 @@ void inputOutput(){
         pair<bool, Trie*> curr = search(root, mStrings.at(i));
         vector<pair<string, int> > allStrings;
         if(curr.first){
+            if(curr.second->isWord){
+                allStrings.push_back(make_pair(mStrings.at(i), curr.second->weight));
+           }
            printAll(curr.second, mStrings.at(i), allStrings); 
            sort(allStrings.begin(), allStrings.end(), compare);
-           for(int j = 0 ; j < allStrings.size() && j < 5 ; i++){
-               cout<<allStrings.at(i).first<<" ";
+           for(int j = 0 ; j < allStrings.size() && j < 5 ; j++){
+               cout<<allStrings.at(j).first<<" ";
            }
         }
         else{

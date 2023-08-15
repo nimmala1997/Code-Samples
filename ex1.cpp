@@ -3,23 +3,23 @@
 using namespace std;
 
 string interpret(string command) {
-        for(int i = 0 ; i < command.size() ; i++){
-            if(command[i] == '('){
-               if(command[i+1] == ')'){
-                   command[i] = 'o';
-               }
-               else{
-                   command.erase(i,1);
-                   i--;
-               }
+    for(int i = 0 ; i < command.size() ; i++){
+        if(command[i] == '('){
+            if(command[i+1] == ')'){
+                command[i] = 'o';
             }
-            else
-             if(command[i] == ')'){
+            else{
                 command.erase(i,1);
                 i--;
             }
         }
-        return command;
+        else
+            if(command[i] == ')'){
+            command.erase(i,1);
+            i--;
+        }
+    }
+    return command;
 }
 
 int main(){

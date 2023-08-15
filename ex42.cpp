@@ -1,31 +1,47 @@
 #include<iostream>
 #include<vector>
+
 using namespace std;
 
-int solve(vector<int> &A, int B) {
-   int squares = 0;
-   for(int i = 0 ; i < A.size(); i++){
-      if((float)A.at(i) < (float)B/A.at(i)) squares++;
-      else break;
-   }
-   int answer = 0;
-   for(int i = A.size() - 1 ; i >= 0; i--) {
-      float valueIndex = (float)B/A.at(i);
-      auto iterator = lower_bound(A.begin(), A.end(), valueIndex);
-      int index = distance(A.begin(),iterator) - 1; 
-      if(index <= i && index >= 0){
-         if(index < i) answer += 2;
-         if(valueIndex != A.at(i)) answer += 2;
-      }
-        
+vector<int> solve(vector<int> &A, int B) {
+    int zerosCount = 0;
+    vector<int> zerosIndex;
+    zerosIndex.push_back(-1);
+    int i = 0 , j =  0 , zeroIndex = 0;
+    int answer = INT_MIN;
+    int startIndex, endIndex;
+    while(j < A.size()){
+        if(A.at(j) == 0) {
+            zerosCount++;
+            zerosIndex.push_back(j);
+        }
+        if(zerosCount > B){
+            i = zerosIndex.at(zeroIndex++) + 1;
+            if((j - i) > answer){
+                startIndex = i;
+                endIndex = j - 1;
+                answer = (j - i);
+            }
+            zerosCount--;
+        }
+        j++;
     }
-    return answer+ squares;
+    i = zerosIndex.at(zeroIndex++) + 1;
+    if((j - i) > answer){
+         startIndex = i;
+         endIndex = j - 1;
+    }
+    vector<int> output;
+    for(i =  startIndex ; i <= endIndex ;i++){
+        output.push_back(i);
+    }
+    return output;
 }
 
-int main(){
-   int arr[] = {1,2,3,4,5};
+int main() {
+   int arr[] = {1,1,0,1,1,0,0,1,1,1};
    vector<int> input;
-   for(int i = 0 ; i < 5 ; i++) input.push_back(arr[i]);
-   int answer = solve(input, 5);
+   for(int i = 0 ; i < 10 ; i++) input.push_back(arr[i]);
+   vector<int> output = solve(input, 1);
    return 0;
 }
