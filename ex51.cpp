@@ -22,7 +22,7 @@ void insertInTrie(Trie* root, string input, int weight){
             currentCharacter = new Trie();
         }
         root->allCharacters.at(input.at(i) - 'a') = currentCharacter;
-        root= currentCharacter;
+        root = currentCharacter;
     }
     root->weight = weight;
     root->isWord = true;
