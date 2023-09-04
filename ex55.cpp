@@ -57,7 +57,8 @@ void searchAndPrint(Trie* root, string prefix) {
         if(currentCharacter != nullptr){
             root = currentCharacter;
         }
-        else result = make_pair(false, nullptr);
+        else {
+          result = make_pair(false, nullptr);
     }
     result = make_pair(true,root);
 
