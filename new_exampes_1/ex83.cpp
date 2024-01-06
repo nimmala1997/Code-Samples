@@ -2,7 +2,7 @@
 #include<vector>
 
 using namespace std;
-
+     
 void allPermutations(int count, vector<bool> presentValues, vector<int> input, vector<vector<int> > &answer, vector<int> currentCombination){
     if(count == input.size()){
         answer.push_back(currentCombination);
